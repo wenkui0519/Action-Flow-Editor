@@ -6,7 +6,7 @@ export interface FlowGramConfig {
     readonly?: boolean,
     // 默认布局方式
     defaultLayout?: 'vertical-fixed-layout' | 'horizontal-fixed-layout',
-    // 样式配置 
+    // 样式配置  
     constants?: ConstantKeys,
     // 组件初始化回调
     onInit?: (ext: any) => void,
