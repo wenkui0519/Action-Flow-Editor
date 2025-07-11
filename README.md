@@ -24,6 +24,7 @@ npm run build
 <action-flow-editor [config]="config" [initialData]="initialData"></action-flow-editor>
 ```
 ### 基础配置
+
 | 属性名        | 类型                      | 默认值    | 说明                                                                           |
 | ------------- | ------------------------- | --------- | ------------------------------------------------------------------------------ |
 | background    | boolean                   | true      | 是否显示背景                                                                   |
@@ -32,7 +33,9 @@ npm run build
 | constants     | object (ConstantKeys)     | undefined | 样式常量配置，用于覆盖默认样式                                                 |
 | langs         | { [key: string]: string } | undefined | 多语言配置对象，用于覆盖默认文本                                               |
 ### 回调函数
+
 以下是可用的生命周期与事件回调：
+
 #### `onInit(ext: any) => void`
 - **触发时机**：组件初始化完成后调用。
 - **参数**：
@@ -89,8 +92,9 @@ config: {
 ```
 
 ## 配置示例
+
 组件支持通过 `config` 属性传入配置对象。配置对象包含以下属性：
-**设置方式：**
+
 ```html
 // 完整配置示例
 const advancedConfig = {
