@@ -10,6 +10,6 @@ const WebApp = r2wc(Editor, React, ReactDOM, {
         langs: 'Object',
     }
 });
-if (!customElements.get('fixed-layout-editor')) {
-    customElements.define("fixed-layout-editor", WebApp);
+if (!customElements.get('action-flow-editor')) {
+    customElements.define("action-flow-editor", WebApp);
 }

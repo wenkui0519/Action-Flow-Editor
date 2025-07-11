@@ -58,7 +58,7 @@ export const renderForm = ({ form }: FormRenderProps<FlowNodeJSON['data']>) => {
     <>
       {/* {node.flowNodeType} */}
       {/* 传入的节点 */}
-      <fixed-node-form ref={elRef}></fixed-node-form>
+      <action-flow-node ref={elRef}></action-flow-node>
     </>
   );
 }

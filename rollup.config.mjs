@@ -6,9 +6,9 @@ import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
 
 export default {
-    input: 'src/fixed-layout-webcomponent.tsx',
+    input: 'src/action-flow-editor.tsx',
     output: {
-        file: 'dist/fixed-layout-webcomponent.min.js',
+        file: 'dist/action-flow-editor.min.js',
         format: 'iife',
         name: 'FixedLayoutBundle',
     },
