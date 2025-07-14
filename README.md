@@ -129,8 +129,6 @@ const advancedConfig = {
   }
 };
 ```
-[type]="type" [config]="config" [nodeData]="nodeData" [flowNodeOperation]="flowNodeOperation"
-
 
 
 ## 节点 web component 输入配置
@@ -139,14 +137,14 @@ const advancedConfig = {
 <!-- 节点模板，需要在项目中单独封装为web component，以便画布渲染 -->
 <action-flow-node [type]="type" [config]="config" [nodeData]="nodeData" [flowNodeOperation]="flowNodeOperation"></action-flow-node>
 ```
-## 输入配置
+
 | 属性名                                          | 说明                       |
-| ----------------------------------------------- |
-| ----------------------------------------------- |
+| ----------------------------------------------- | -------------------------- |
 | type                                            | 节点类型                   |
 | config                                          | 输入给动作流设计器的config |
 | nodeData                                        | 节点数据                   |
 | flowNodeOperation                               | 节点操作接口集合           |
+
 
 
 ## Angular完整示例
