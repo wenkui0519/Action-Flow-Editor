@@ -7,7 +7,6 @@ import { Tools } from './components';
 
 import { FlowGramConfig } from './interface';
 import { ConfigContext } from './context';
-import { InitialData } from './initial-data';
 import './index.css';
 
 
@@ -19,7 +18,6 @@ export const Editor = (props: { hideTools?: boolean, config?: FlowGramConfig, in
    * Editor Config
    */
   const editorProps = useEditorProps(flowDocumentJSON, FlowNodeRegistries, props.config as any);
-  // const editorProps = useEditorProps(InitialData, FlowNodeRegistries, props.config as any);
 
   const config = props.config || { background: true };
 

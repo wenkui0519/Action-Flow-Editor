@@ -22,7 +22,12 @@ npm run build
 ```html
 <!-- 在任意位置使用 -->
 <action-flow-editor [config]="config" [initialData]="initialData"></action-flow-editor>
+<!-- 节点模板，需要在项目中单独封装为web component，以便画布渲染 -->
+<action-flow-node [type]="type" [config]="config" [nodeData]="nodeData" [flowNodeOperation]="flowNodeOperation"></action-flow-node>
 ```
+
+## 配置项
+
 ### 基础配置
 
 | 属性名        | 类型                      | 默认值    | 说明                                                                           |
@@ -123,4 +128,60 @@ const advancedConfig = {
     };
   }
 };
+```
+[type]="type" [config]="config" [nodeData]="nodeData" [flowNodeOperation]="flowNodeOperation"
+
+
+
+## 节点 web component 输入配置
+
+```html
+<!-- 节点模板，需要在项目中单独封装为web component，以便画布渲染 -->
+<action-flow-node [type]="type" [config]="config" [nodeData]="nodeData" [flowNodeOperation]="flowNodeOperation"></action-flow-node>
+```
+## 输入配置
+| 属性名                                          | 说明                       |
+| ----------------------------------------------- |
+| ----------------------------------------------- |
+| type                                            | 节点类型                   |
+| config                                          | 输入给动作流设计器的config |
+| nodeData                                        | 节点数据                   |
+| flowNodeOperation                               | 节点操作接口集合           |
+
+
+## Angular完整示例
+
+节点组件
+```html
+@switch (nodeType) {
+  @case('start'){
+    <div>开始节点</div>
+  }
+}
+```
+```typescript
+export class NodeComponent implements OnInit {
+    // 配置
+    config;
+    // 节点数据
+    nodeData;
+    // 节点类型
+    type;
+    // 节点操作方法集合
+    flowNodeOperation = {};
+}
+```
+
+画布组件
+```html
+<action-flow-editor [config]="config" [initialData]="initialData">
+</action-flow-editor>
+```
+```typescript
+ngOnInit() {
+if (!customElements.get('action-flow-editor')) {
+  const el = createCustomElement(NodeComponent, { injector: this.injector });
+    customElements.define('action-flow-editor', el);
+  }
+}
 ```
