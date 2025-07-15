@@ -29,6 +29,7 @@
     "@babel/core": "^7.27.4",
     "@babel/preset-react": "^7.27.1",
     "@babel/preset-typescript": "^7.27.1",
+    "@douyinfe/semi-icons": "^2.83.0",
     "@douyinfe/semi-ui": "^2.80.0",
     "@flowgram.ai/eslint-config": "^0.2.9",
     "@flowgram.ai/fixed-layout-editor": "^0.2.9",

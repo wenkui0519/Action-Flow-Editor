@@ -128,20 +128,6 @@ export default function Adder(props: {
               borderRadius: 15,
             }}
           />
-          // <span
-          //   style={{
-          //     borderRadius: 15,
-          //     height: 15,
-          //     width: 15,
-          //   }}
-          //   className="eui-icon icon-add-default eui-text-primary"
-          //   onClick={() => {
-          //     setVisible(true);
-          //   }}
-          //   onMouseEnter={() => {
-          //     const data = clipboard.readText();
-          //     setPasteIconVisible(!!data);
-          //   }}></span>
         ) : (
           ''
         )}

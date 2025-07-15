@@ -1,6 +1,7 @@
-import { Tooltip } from '@douyinfe/semi-ui';
+import { IconButton, Tooltip } from '@douyinfe/semi-ui';
 import { useContext } from 'react';
 import { ConfigContext } from '../../context';
+import { IconGridRectangle } from '@douyinfe/semi-icons';
 
 export const MinimapSwitch = (props: {
   minimapVisible: boolean;
@@ -14,16 +15,19 @@ export const MinimapSwitch = (props: {
 
   return (
     <Tooltip content={langs.mini_map || "Minimap"}>
-      <button className="eui-btn eui-icon-btn" onClick={() => {
-        setMinimapVisible(Boolean(!minimapVisible));
-      }}>
-        <span
-          className={"eui-icon icon-new-window-opens " + (minimapVisible ? 'eui-text-primary' : '')}
-          style={{
-            color: "#333"
-          }}
-        ></span>
-      </button>
+      <IconButton
+        theme="borderless"
+        icon={
+          <IconGridRectangle
+            style={{
+              color: minimapVisible ? undefined : '#060709cc',
+            }}
+          />
+        }
+        onClick={() => {
+          setMinimapVisible(Boolean(!minimapVisible));
+        }}
+      />
     </Tooltip>
   );
 };

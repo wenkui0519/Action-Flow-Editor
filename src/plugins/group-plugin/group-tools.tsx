@@ -8,8 +8,10 @@ import {
   type FlowGroupController,
   useClientContext,
 } from '@flowgram.ai/fixed-layout-editor';
-import { Tooltip } from '@douyinfe/semi-ui';
+import { Button, Tooltip } from '@douyinfe/semi-ui';
 import { ConfigContext } from '../../context';
+import { IconDeleteStroked, IconExpand, IconHandle, IconShrink } from '@douyinfe/semi-icons';
+import { IconUngroupOutlined } from './icons';
 
 interface GroupToolsProps {
   groupNode: FlowNodeEntity;
@@ -52,10 +54,13 @@ export const GroupTools: FC<GroupToolsProps> = (props) => {
         e.stopPropagation();
       }}
     >
-      <div className="eui-d-flex">
+      <div className="action-flex">
         <Tooltip content="Drag">
-          <button className="eui-btn eui-icon-btn"
+          <Button
             style={{ ...buttonStyle, cursor: 'grab' }}
+            icon={<IconHandle />}
+            type="primary"
+            theme="borderless"
             onMouseDown={(e) => {
               e.stopPropagation();
               startDrag(e, {
@@ -63,14 +68,15 @@ export const GroupTools: FC<GroupToolsProps> = (props) => {
                 dragEntities: [groupNode],
               });
             }}
-          >
-            <span className="eui-icon icon-move-list"></span>
-          </button>
+          />
         </Tooltip>
 
         <Tooltip content={groupController?.collapsed ? (langs.expand || 'Expand') : (langs.collapse || 'Collapse')}>
-          <button className="eui-btn eui-icon-btn"
+          <Button
             style={buttonStyle}
+            icon={groupController?.collapsed ? <IconExpand /> : <IconShrink />}
+            type="primary"
+            theme="borderless"
             onClick={(e) => {
               if (!groupController) {
                 return;
@@ -81,18 +87,19 @@ export const GroupTools: FC<GroupToolsProps> = (props) => {
               } else {
                 groupController.collapse();
               }
-            }}>
-            <span className={"eui-icon " + (groupController?.collapsed ? 'icon-fullscreen' : 'icon-cancel-fullscreen')}></span>
-          </button>
+            }}
+          />
         </Tooltip>
         <Tooltip content={langs.un_group || "Ungroup"}>
-          <button className="eui-btn eui-icon-btn"
+          <Button
             style={buttonStyle}
+            icon={<IconUngroupOutlined />}
+            type="primary"
+            theme="borderless"
             onClick={() => {
               groupService.ungroup(groupNode);
-            }}>
-            <span className="eui-icon icon-cancel-combination"></span>
-          </button>
+            }}
+          />
         </Tooltip>
         {/* <Tooltip content="Copy">
           <Button
@@ -111,13 +118,15 @@ export const GroupTools: FC<GroupToolsProps> = (props) => {
           />
         </Tooltip> */}
         <Tooltip content={langs.delete_node || "Delete"}>
-          <button className="eui-btn eui-icon-btn"
+          <Button
             style={buttonStyle}
+            type="primary"
+            theme="borderless"
+            icon={<IconDeleteStroked />}
             onClick={() => {
               operation.deleteNode(groupNode);
-            }}>
-            <span className="eui-icon icon-delete"></span>
-          </button>
+            }}
+          />
         </Tooltip>
       </div>
     </div>

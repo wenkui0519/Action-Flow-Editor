@@ -2,6 +2,7 @@ import { FlowNodeRenderData, type FlowNodeEntity } from '@flowgram.ai/fixed-layo
 
 import { FlowNodeRegistries } from '../../nodes';
 import { UIDragNodeContainer, UIDragCounts } from './styles';
+import { Icon } from '../styles';
 
 export interface PropsType {
   dragStart: FlowNodeEntity;
@@ -24,7 +25,7 @@ export function DragNode(props: PropsType): JSX.Element {
 
   return (
     <UIDragNodeContainer>
-      <span className={'eui-icon ' + icon}></span>
+      <Icon src={icon} />
       {dragStart?.id}
       {dragLength > 1 && (
         <>

@@ -1,6 +1,7 @@
-import { Tooltip } from '@douyinfe/semi-ui';
+import { IconButton, Tooltip } from '@douyinfe/semi-ui';
 import { useContext } from 'react';
 import { ConfigContext } from '../../context';
+import { IconExpand } from '@douyinfe/semi-icons';
 
 export const FitView = (props: { fitView: () => void }) => {
 
@@ -10,14 +11,12 @@ export const FitView = (props: { fitView: () => void }) => {
 
   return (
     <Tooltip content={langs.zoom_fit || "FitView"}>
-      <button className="eui-btn eui-icon-btn" onClick={() => props.fitView()}>
-        <span
-          className="eui-icon icon-arrows-w"
-          style={{
-            color: "#333"
-          }}
-        ></span>
-      </button>
+      <IconButton
+        icon={<IconExpand />}
+        type="tertiary"
+        theme="borderless"
+        onClick={() => props.fitView()}
+      />
     </Tooltip>
   );
 };

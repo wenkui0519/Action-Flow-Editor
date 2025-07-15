@@ -1,4 +1,5 @@
 import { type FlowNodeEntity, useClientContext } from '@flowgram.ai/fixed-layout-editor';
+import { IconPlus } from '@douyinfe/semi-icons';
 
 import { CatchBlockNodeRegistry } from '../../nodes/catch-block';
 import { CaseNodeRegistry } from '../../nodes/case';
@@ -54,7 +55,7 @@ export default function BranchAdder(props: PropsType) {
         aria-hidden="true"
         style={{ flexGrow: 1, textAlign: 'center' }}
       >
-        <span className="eui-icon icon-append"></span>
+        <IconPlus />
       </div>
     </Container>
   );

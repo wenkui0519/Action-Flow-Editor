@@ -19,6 +19,10 @@ const NodeWrap = styled.div`
   font-size: 19px;
   padding: 6px 8px;
   background: #fff;
+  &:hover {
+    background-color: hsl(252deg 62% 55% / 9%);
+    color: hsl(252 62% 54.9%);
+  },
 `;
 
 const NodeLabel = styled.div`
@@ -27,14 +31,13 @@ const NodeLabel = styled.div`
 `;
 
 
-function Node(props: { label: string; icon: string; onClick: () => void; disabled: boolean }) {
+function Node(props: { label: string; icon: any; onClick: () => void; disabled: boolean }) {
   return (
     <NodeWrap
-      className='eui-bg-primary-hover eui-text-hover-primary'
       onClick={props.disabled ? undefined : props.onClick}
       style={props.disabled ? { opacity: 0.3 } : {}}
     >
-      <span className={'eui-text-primary eui-icon ' + props.icon} style={{ fontSize: 16 }}></span>
+      <div style={{ fontSize: 14 }}>{props.icon}</div>
       <NodeLabel>{props.label}</NodeLabel>
     </NodeWrap>
   );
@@ -83,7 +86,7 @@ export function NodeList(props: { onSelect: (meta: any) => void; from: FlowNodeE
         <Node
           key={registry.type}
           disabled={!(registry.canAdd?.(context, props.from) ?? true)}
-          icon={registry.info.icon}
+          icon={<img style={{ width: 10, height: 10, borderRadius: 4 }} src={registry.info.icon} />}
           onClick={() => handleClick(registry)}
           label={langs[langKey[registry.type]] || registry.title}
         />

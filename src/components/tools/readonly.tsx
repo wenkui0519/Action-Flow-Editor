@@ -1,8 +1,9 @@
 import { useCallback, useContext } from 'react';
 
 import { usePlayground } from '@flowgram.ai/fixed-layout-editor';
-import { Tooltip } from '@douyinfe/semi-ui';
+import { IconButton, Tooltip } from '@douyinfe/semi-ui';
 import { ConfigContext } from '../../context';
+import { IconLock, IconUnlock } from '@douyinfe/semi-icons';
 
 export const Readonly = () => {
   const playground = usePlayground();
@@ -14,17 +15,13 @@ export const Readonly = () => {
   const config = useContext(ConfigContext),
     langs = config?.langs || {};
 
-  return (
-    <Tooltip content={playground.config.readonly ? (langs.readonly || 'readonly') : (langs.edit_node || 'edit')}>
-      <button className="eui-btn eui-icon-btn" onClick={toggleReadonly}>
-        <span
-          className={"eui-icon " + (playground.config.readonly ? 'icon-change-password' : 'icon-locking')}
-          style={{
-            color: "#333"
-          }}
-        ></span>
-      </button>
+  return playground.config.readonly ? (
+    <Tooltip content={langs.readonly || 'readonly'}>
+      <IconButton theme="borderless" type="tertiary" icon={<IconLock />} onClick={toggleReadonly} />
     </Tooltip>
-
+  ) : (
+    <Tooltip content={langs.edit_node || 'edit'}>
+      <IconButton theme="borderless" type="tertiary" icon={<IconUnlock />} onClick={toggleReadonly} />
+    </Tooltip>
   );
 };
