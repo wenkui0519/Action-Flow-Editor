@@ -4,19 +4,28 @@ import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
+import { defineConfig } from 'rollup';
 
-export default {
+export default defineConfig({
     input: 'src/action-flow-editor.tsx',
-    output: {
-        file: 'dist/action-flow-editor.min.js',
-        format: 'iife',
-        name: 'FixedLayoutBundle',
-    },
+    output: [
+        {
+            file: 'dist/action-flow-editor.js',
+            format: 'iife',
+            name: 'FixedLayoutBundle',
+        },
+        {
+            file: 'dist/action-flow-editor.min.js',
+            format: 'iife',
+            name: 'FixedLayoutBundle',
+            plugins: [terser()]
+        }
+    ],
     plugins: [
         // 先处理 CSS 导入，避免后续插件报错
         postcss({
             extensions: ['.css'],
-            extract: false,
+            extract: 'action-flow-editor.css',
             modules: false,
             minimize: true,
             sourceMap: true
@@ -41,6 +50,5 @@ export default {
                 '@babel/preset-typescript'
             ]
         }),
-        terser(),
     ],
-};
+});
